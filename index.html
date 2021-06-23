@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./app/app.js" type="module"></script>
+        <script>
+            window.onload = () => {
+                const todoInstance1 = window.UI.todo.create({
+                    renderTo: document.querySelector("div[todoContainer1]")
+                });
+                todoInstance1.onItemAdded.subscribe(item => {
+                    console.log("1: onAdded > " + item.title);
+                });
+                todoInstance1.onItemRemoved.subscribe(item => {
+                    console.log("1: onRemoved > " + item.title);
+                });
+
+                const todoInstance2 = window.UI.todo.create({
+                    renderTo: document.querySelector("div[todoContainer2]")
+                });
+                todoInstance2.onItemAdded.subscribe(item => {
+                    console.log("2: onAdded > " + item.title);
+                });
+                todoInstance2.onItemRemoved.subscribe(item => {
+                    console.log("2: onRemoved > " + item.title);
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <div todoContainer1></div>
+        <div todoContainer2></div>
+    </body>
+</html>
